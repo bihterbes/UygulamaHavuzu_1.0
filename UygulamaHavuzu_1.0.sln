@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32630.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UygulamaHavuzu_1.0", "UygulamaHavuzu_1.0\UygulamaHavuzu_1.0.csproj", "{BFBCEB10-C1D7-4EFA-BE49-F62436F066F6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BFBCEB10-C1D7-4EFA-BE49-F62436F066F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFBCEB10-C1D7-4EFA-BE49-F62436F066F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFBCEB10-C1D7-4EFA-BE49-F62436F066F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFBCEB10-C1D7-4EFA-BE49-F62436F066F6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A729AC2E-547B-4728-BAD6-B7AC4665EB71}
+	EndGlobalSection
+EndGlobal

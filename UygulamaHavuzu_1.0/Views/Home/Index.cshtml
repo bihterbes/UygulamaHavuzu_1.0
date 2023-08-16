@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    //Layout = "_OrnekLayout";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+
+
+
+
+
+
+@*
+            ajax öğrenerek indeks hesaplama yap
+           <div><a asp-controller="Home" asp-action="ozlusozapp"> Günlük Özlü Söz</a></div>
+    <div><a asp-controller="Home" asp-action="Todoapp"> To-Do App</a></div>
+    <div><a asp-controller="Home" asp-action="HavaDurumuApp"> Hava Durumu</a></div>
+    <div> <a asp-controller="Home" asp-action="IndeksHesapla"> Kitle İndeksi Hesapla</a></div>
+*@
+
+
+
+
+<body>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-3">
+                <div class="card">
+                    <img src="~/css/kitle indeksi.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Kitle İndeks App</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <button type="button" class="btn btn-light"><a asp-controller="Home" asp-action="indekshesapla"> Git-></a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <img src="~/css/Todo.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">To-Do App</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <button type="button" class="btn btn-light"><a asp-controller="Home" asp-action="todoapp"> Git-></a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <img src="~/css/weather.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Hava Durumu</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <button type="button" class="btn btn-light"><a asp-controller="Home" asp-action="havadurumuapp"> Git-></a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <img src="~/css/quotes.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Özlü Sözler</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                        <button type="button" class="btn btn-light"><a asp-controller="Home" asp-action="ozlusozapp"> Git-></a></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+</body>
