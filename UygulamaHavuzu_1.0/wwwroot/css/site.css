@@ -11,7 +11,10 @@ a.navbar-brand {
 a {
   color: #0366d6;
 }
-
+.pink-background {
+    background-color: #ffcccc;
+    /* Diğer stillemeleri burada ekleyebilirsiniz */
+}
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;

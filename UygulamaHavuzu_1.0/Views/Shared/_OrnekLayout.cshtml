@@ -1,6 +1,7 @@
 ﻿
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,15 +13,31 @@
 </head>
 <body>
     <header>
-        <div>header yeri</div>
+        <div class="container-fluid pink-background">
+            <div class="row">
+                <div class="col-md-12 text-left mb-2">
+                    <h2 class="text-white">^._.^= ∫ </h2>
+                </div>
+            </div>
+        </div>
+
     </header>
+    <style>
+        body {
+            background-image: url('/css/pembe.jpeg');
+            background-size: cover; /* Resmi pencereye sığdır */
+            background-repeat: no-repeat; /* Tekrarlamayı engelle */
+           
+        }
+    </style>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class>
+    <footer>
         <div>
             footer yeri
         </div>

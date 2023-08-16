@@ -1,6 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-    //Layout = "_OrnekLayout";
+    Layout = "_OrnekLayout";
+    
+    //Layout = "_ResimliLayout";
 }
 
 
@@ -12,7 +14,6 @@
 
 
 
-<h1>AAAAAAAAAAAAAAAAAAAAA</h1>
 
 
 
@@ -37,7 +38,10 @@
                     <div class="card-body">
                         <h5 class="card-title">Kitle İndeks App</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <button type="button" class="btn btn-light"><a asp-controller="Home" asp-action="indekshesapla"> Git-></a></button>
+                        
+                        <a class="btn btn-light" asp-controller="Home" asp-action="indekshesapla"> Git-></a>
+                      
+
                     </div>
                 </div>
             </div>
@@ -47,7 +51,8 @@
                     <div class="card-body">
                         <h5 class="card-title">To-Do App</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <button type="button" class="btn btn-light"><a asp-controller="Home" asp-action="todoapp"> Git-></a></button>
+                        
+                        <a class="btn btn-light" asp-controller="Home" asp-action="todoapp"> Git-></a>
                     </div>
                 </div>
             </div>
@@ -57,7 +62,8 @@
                     <div class="card-body">
                         <h5 class="card-title">Hava Durumu</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <button type="button" class="btn btn-light"><a asp-controller="Home" asp-action="havadurumuapp"> Git-></a></button>
+                       
+                        <a class="btn btn-light" asp-controller="Home" asp-action="havadurumuapp"> Git-></a>
                     </div>
                 </div>
             </div>
@@ -67,13 +73,13 @@
                     <div class="card-body">
                         <h5 class="card-title">Özlü Sözler</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-
-                        <button type="button" class="btn btn-light"><a asp-controller="Home" asp-action="ozlusozapp"> Git-></a></button>
+                        <a class="btn btn-light" asp-controller="Home" asp-action="ozlusozapp"> Git-></a>
+                        
                     </div>
                 </div>
             </div>
 
         </div>
 
-
+        
 </body>
