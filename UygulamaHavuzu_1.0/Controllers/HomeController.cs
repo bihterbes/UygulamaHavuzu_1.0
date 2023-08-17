@@ -27,22 +27,9 @@ namespace UygulamaHavuzu_1._0.Controllers
         {
             return View();
         }
-        public IActionResult ToDoApp()
-        {
-            return View();
-        }
-        public IActionResult IndeksHesapla()
-        {
-            return View();
-        }
-        public IActionResult HavaDurumuApp()
-        {
-            return View();
-        }
-        public IActionResult OzluSozApp()
-        {
-            return View();
-        }
+        
+      
+       
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
