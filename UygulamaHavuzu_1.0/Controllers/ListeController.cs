@@ -30,6 +30,22 @@ namespace UygulamaHavuzu_1._0.Controllers
             var listeler = _YapmaListesiReporsitory.GetAll();
             return View(listeler);
         }
-        
+
+        public IActionResult Remove(int id)
+        {
+            _YapmaListesiReporsitory.Remove(id);
+            return RedirectToAction("ToDoApp");
+        }
+        public IActionResult Add()
+        {
+            return View();
+        }
+        public IActionResult Update(int id)
+        {
+            return View();
+        }
+
+
+
     }
 }

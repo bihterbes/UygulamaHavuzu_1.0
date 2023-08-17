@@ -4,4 +4,46 @@
 }
 
 <h1>ToDoApp Yeni Hali :></h1>
+    @*
+        https://www.youtube.com/watch?v=G0jO8kUrg-I
+        izle yaparsın yavrm
+    
+    *@
 
+
+
+<div class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="customCheck1">
+    <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
+</div>
+<h1>Yapılacaklar</h1>
+<td><a asp-controller="Liste" asp-action="add"> Ekle</a></td>
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th class=" container">Yapılacak</th>
+                <th>Yapıldı</th>
+                <th>değiştir</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Do</td>
+                    <td><a asp-controller="Liste" asp-action="remove" asp-route-id="@item.Id">Sil</a></td>
+                    <td><a asp-controller="Liste" asp-action="update" asp-route-id="@item.Id">güncelle</a></td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
+</div>
