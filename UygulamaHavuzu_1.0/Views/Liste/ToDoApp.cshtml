@@ -1,49 +1,38 @@
-﻿
-@{
-    ViewData["Title"] = "ToDoApp";
+﻿@{
+   
+    Layout = "_ResimliLayout";
 }
 
-<h1>ToDoApp Yeni Hali :></h1>
-    @*
-        https://www.youtube.com/watch?v=G0jO8kUrg-I
-        izle yaparsın yavrm
-    
-    *@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>To Do List App - Bihter Deneme</title>
+    <link rel="stylesheet" href="~/css/style_todo.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="todo-app">
+            <h2>To-Do List<img src="~/css/icon_todo.png"></h2>
+            <div class="row">
+                <input type="text" id="input-box" placeholder="Add your text">
+                <button onclick="addTask()">Add</button>
+            </div>
+            <ul id="list-container">
+                <!-- Sayfa içeriği
+                   <li class="checked">task 1</li>
+                   <li> köpek sev</li>
+                   <li> saygınlık</li>-->
+
+
+            </ul>
+        </div>
+    </div>
+    <script src="~/js/script.js"></script>
+</body>
+
+</html>
 
 
 
-<div class="custom-control custom-checkbox">
-    <input type="checkbox" class="custom-control-input" id="customCheck1">
-    <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
-</div>
-<h1>Yapılacaklar</h1>
-<td><a asp-controller="Liste" asp-action="add"> Ekle</a></td>
-
-<div class="container">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th class=" container">Yapılacak</th>
-                <th>Yapıldı</th>
-                <th>değiştir</th>
-
-            </tr>
-        </thead>
-        <tbody>
-
-
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@item.Id</td>
-                    <td>@item.Do</td>
-                    <td><a asp-controller="Liste" asp-action="remove" asp-route-id="@item.Id">Sil</a></td>
-                    <td><a asp-controller="Liste" asp-action="update" asp-route-id="@item.Id">güncelle</a></td>
-                </tr>
-
-            }
-        </tbody>
-    </table>
-
-</div>
