@@ -33,7 +33,7 @@ listContainer.addEventListener("click", function (e){
 }, false);
 
 function saveData() {
-    localStorage.setItem("data", listContainer.innerHTML);
+    localStorage.setItem("data", listContainer.innerHTML);  //düzelt database ekle
 }
 
 function showTask() {
