@@ -1,0 +1,27 @@
+[
+  {
+    "Id": 1,
+    "Name": "Socrates",
+    "Soz": "True knowledge exists in knowing that you know nothing."
+  },
+  {
+    "Id": 2,
+    "Name": "Unknown",
+    "Soz": "The biggest room in the world is the room for improvement."
+  },
+  {
+    "Id": 3,
+    "Name": "Socrates",
+    "Soz": "Falling down is not failure. Failure comes when you stay where you have fallen."
+  },
+  {
+    "Id": 4,
+    "Name": "Wayne Dyer",
+    "Soz": "Go for it now. The future is promised to no one."
+  },
+  {
+    "Id": 5,
+    "Name": "Earl Nightingale",
+    "Soz": "Successful people are not without problems. They're simply people who've learned to solve their problems."
+  }
+]

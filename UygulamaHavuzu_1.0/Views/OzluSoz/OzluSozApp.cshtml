@@ -1,7 +1,72 @@
 ﻿
 @{
     ViewData["Title"] = "OzluSozApp";
+
 }
 
 <h1>OzluSozApp ama yenisi</h1>
 
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Quote of the Day</h5>
+        <p class="card-text">Buraya söz gelecek</p>
+        <a href="#" class="btn btn-primary">generate </a>
+        <input class="alert-danger" type="button" onclick="BtnClick()" value="Click lan" />
+    </div>
+</div>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>HAHAHAHAA</title>
+
+</head>
+<body>
+    <div>
+
+
+        <div>
+            <h2>Id :  <span id="qId"></span></h2>
+            <h2>Name :  <span id="qName"></span></h2>
+            <h2>Soz :  <span id="qSoz"></span></h2>
+        </div>
+
+
+        <input type="button" onclick="BtnClick()" value="Click lan" />
+
+    </div>
+
+</body>
+</html>
+
+<script>
+    var previousIndex = -1; // Önceki seçilen indeksi saklamak için
+
+    function BtnClick() {
+        $.ajax({
+            url: "/ozlusoz/GetQuoteFromJsonFile", // GetQuoteFromJsonFile metodunun çağrı adresi
+            method: "GET",
+            success: function (data) {
+                var randomIndex = getRandomIndex(data.length, previousIndex); // Rastgele bir indeks seç
+                var randomQuote = data[randomIndex]; // Rastgele seçilen öğeyi al
+
+                $("#qId").text(randomQuote.id);
+                $("#qName").text(randomQuote.name);
+                $("#qSoz").text(randomQuote.soz);
+
+                previousIndex = randomIndex; // Önceki indeksi güncelle
+            },
+            error: function (err) {
+                console.error(err);
+            }
+        });
+    }
+
+    function getRandomIndex(max, excludedIndex) {
+        var randomIndex;
+        do {
+            randomIndex = Math.floor(Math.random() * max);
+        } while (randomIndex === excludedIndex); // Önceki seçilen ile aynı olana kadar tekrar seç
+        return randomIndex;
+    }
+    
+</script>
