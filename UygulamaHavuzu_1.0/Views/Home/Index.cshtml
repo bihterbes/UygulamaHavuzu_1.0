@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
     Layout = "_OrnekLayout";
-    
+
     //Layout = "_ResimliLayout";
 }
 
@@ -23,12 +23,15 @@
     <div><a asp-controller="Home" asp-action="Todoapp"> To-Do App</a></div>
     <div><a asp-controller="Home" asp-action="HavaDurumuApp"> Hava Durumu</a></div>
     <div> <a asp-controller="Home" asp-action="IndeksHesapla"> Kitle İndeksi Hesapla</a></div>
+    <a class="btn btn-light" asp-controller="HomeController1" asp-action="Index"> Go-></a>
+    <a class="btn btn-light" asp-controller="KitleHesap" asp-action="indekshesapla"> Go-></a>
 *@
 
 
 
 
 <body>
+    
     <div class="container">
         <div class="row">
 
@@ -38,9 +41,9 @@
                     <div class="card-body">
                         <h5 class="card-title">BMI Calculator</h5>
                         <p class="card-text">Calculate your estimated body fat percentage using Body Mass Index (BMI)!</p>
-                        
-                        <a class="btn btn-light" asp-controller="KitleHesap" asp-action="indekshesapla"> Go-></a>
-                      
+
+                        <a class="btn btn-light" asp-controller="HomeController1" asp-action="Index"> Go-></a>
+
 
                     </div>
                 </div>
@@ -51,7 +54,7 @@
                     <div class="card-body">
                         <h5 class="card-title">To-Do App</h5>
                         <p class="card-text">A simple to do list app to manage your daily life tasks. Create your own list! </p>
-                        
+
                         <a class="btn btn-light" asp-controller="liste" asp-action="todoapp"> Go-></a>
                     </div>
                 </div>
@@ -62,7 +65,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Hava Durumu</h5>
                         <p class="card-text">The Weather Channel provide local weather forecast for cities</p>
-                       
+
                         <a class="btn btn-light" asp-controller="havadurumu" asp-action="havadurumuapp"> Go-></a>
                     </div>
                 </div>
@@ -74,12 +77,12 @@
                         <h5 class="card-title"> Random Quotes</h5>
                         <p class="card-text">Browse of collection of random quotes to give you inspiration </p>
                         <a class="btn btn-light" asp-controller="ozlusoz" asp-action="ozlusozapp"> Go-></a>
-                        
+
                     </div>
                 </div>
             </div>
 
         </div>
 
-     </div>   
+    </div>
 </body>

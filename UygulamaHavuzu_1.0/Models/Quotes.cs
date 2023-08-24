@@ -11,5 +11,7 @@ namespace UygulamaHavuzu_1._0.Models
         public string Name { get; set; }
       
         public string Soz { get; set; }
+       
     }
 }
+

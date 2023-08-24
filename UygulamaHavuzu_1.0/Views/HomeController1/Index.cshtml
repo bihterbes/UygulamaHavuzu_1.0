@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_OrnekLayout";
+}
+
+@model ExampleModel
+
+<html>
+
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title text-center"> Vücut Kitle İndeksi Hesaplayıcı</h2>
+                        <form asp-controller="HomeController1" asp-action="Hesapla" method="post">
+                            <div class="form-group">
+                                <label for="deger1">Kilo(Kg)</label>
+                                <input type="text" class="form-control" name="deger1" id="aadeger1" step="0.01" placeholder="örn değer: 55"required />
+                            </div>
+                            <div class="form-group">
+                                <label for="deger2">Boy(cm)</label>
+                                <input type="text" class="form-control" name="deger2" id="aadeger2" step="0.01"placeholder="örn değer: 155" required />
+                            </div>
+                            <button type="button" class="btn btn-light" onclick="BtnClick()">Hesapla</button>
+                        </form>
+                        <div id="result">
+                            @if (ViewBag.Sonuc != null)
+                            {
+                                <p>Sonuç: @ViewBag.Sonuc</p>
+                                <p>~ @ViewBag.SonucDurumu</p>
+                            }
+                            else if (ViewBag.Hata != null)
+                            {
+                                <p class="error">@ViewBag.Hata</p>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+</body>
+
+
+</html>
+
+<script>
+    function BtnClick() {
+         event.preventDefault();
+        var deger1 = $("#aadeger1").val();
+        var deger2 = $("#aadeger2").val();
+
+        $.ajax({
+            url: "/HomeController1/Hesapla", // Controller ve metod adı
+            method: "POST", // İstek metodunu belirt
+            data: {
+                deger1: deger1,
+                deger2: deger2
+            },
+            success: function (data) {
+                // Başarılı sonuç geldiğinde çalışacak kısım
+                $("#result").html(data); // Sonucu ekranda göster
+            },
+            error: function (err) {
+                console.error(err);
+            }
+        });
+    }
+</script>
+
+
+
+
+
+
+
+

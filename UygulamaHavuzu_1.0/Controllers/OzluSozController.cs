@@ -6,16 +6,19 @@ using System.Threading.Tasks;
 using UygulamaHavuzu_1._0.Models;
 using Newtonsoft.Json;
 using System.IO;
+using System.Net.Http;
 
 namespace UygulamaHavuzu_1._0.Controllers
 {
     public class OzluSozController : Controller
     {
+       
         public IActionResult OzluSozApp()
         {
             return View();
         }
-       
+
+   
 
         public JsonResult GetQuoteFromJsonFile()
         {
@@ -35,7 +38,7 @@ namespace UygulamaHavuzu_1._0.Controllers
             }
         }
 
-        
+        //düzelt json file liste
 
     }
 }

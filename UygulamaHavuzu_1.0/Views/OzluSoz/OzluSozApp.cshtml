@@ -4,39 +4,46 @@
 
 }
 
+
+
 <h1>OzluSozApp ama yenisi</h1>
 
-<div class="card" style="width: 18rem;">
-    <div class="card-body">
-        <h5 class="card-title">Quote of the Day</h5>
-        <p class="card-text">Buraya söz gelecek</p>
-        <a href="#" class="btn btn-primary">generate </a>
-        <input class="alert-danger" type="button" onclick="BtnClick()" value="Click lan" />
-    </div>
-</div>
 <html>
+
+
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>HAHAHAHAA</title>
+
+
 
 </head>
 <body>
-    <div>
 
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh">
 
-        <div>
-            <h2>Id :  <span id="qId"></span></h2>
-            <h2>Name :  <span id="qName"></span></h2>
-            <h2>Soz :  <span id="qSoz"></span></h2>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Quote of the Day</h5>
+                <p class="card-text" id="qSoz">Buraya söz gelecek</p>
+                <p class="card-text" id="qName">Buraya söyleyen gelecek</p>
+
+                <button class="btn btn-danger" onclick="BtnClick()">Click pls</button>
+            </div>
         </div>
 
 
-        <input type="button" onclick="BtnClick()" value="Click lan" />
+    </div>
+    <div>
+
+            <h2>Id :  <span id="qId"></span></h2>
+
 
     </div>
 
 </body>
 </html>
+
+
 
 <script>
     var previousIndex = -1; // Önceki seçilen indeksi saklamak için
@@ -52,6 +59,7 @@
                 $("#qId").text(randomQuote.id);
                 $("#qName").text(randomQuote.name);
                 $("#qSoz").text(randomQuote.soz);
+           
 
                 previousIndex = randomIndex; // Önceki indeksi güncelle
             },
@@ -68,5 +76,9 @@
         } while (randomIndex === excludedIndex); // Önceki seçilen ile aynı olana kadar tekrar seç
         return randomIndex;
     }
-    
+
+
+
+
 </script>
+
