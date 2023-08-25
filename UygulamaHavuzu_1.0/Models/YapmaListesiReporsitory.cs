@@ -7,7 +7,13 @@ namespace UygulamaHavuzu_1._0.Models
 {
     public class YapmaListesiReporsitory
     {
-        private static List<YapmaListesi> _YapmaListesi=new List<YapmaListesi>();
+        private static List<YapmaListesi> _YapmaListesi=new List<YapmaListesi>()
+        {
+              new() { Id = 1, Name="AHMET", Do = "Bugün yapcak bişi var ama yok" },
+              new() { Id = 2, Name = "MEHMET", Do = "Kedi sevmek" },
+              new() { Id = 3, Name = "AYŞE", Do = "Saygınlık" }
+        };
+        //bu statik düzelt
 
 
         public List<YapmaListesi> GetAll() => _YapmaListesi;
@@ -30,10 +36,11 @@ namespace UygulamaHavuzu_1._0.Models
             var hasList = _YapmaListesi.FirstOrDefault(x => x.Id == updateDo.Id);
             if (hasList == null)
             {
-                throw new Exception("Yapılacak bulunmamaktadır.");
+                throw new Exception($"Bu id({updateDo.Id})'ye sahip yapılacak bulunmamaktadır.");
             }
 
             hasList.Do=updateDo.Do;
+            hasList.Name = updateDo.Name;
 
             var index = _YapmaListesi.FindIndex(x => x.Id == updateDo.Id);
 

@@ -15,13 +15,7 @@ namespace UygulamaHavuzu_1._0.Controllers
         {
             _YapmaListesiReporsitory =new YapmaListesiReporsitory();
 
-            if (!_YapmaListesiReporsitory.GetAll().Any())
-            {
-                _YapmaListesiReporsitory.Add(new() { Id = 1, Do = "Bugün yapcak bişi var ama yok" });
-                _YapmaListesiReporsitory.Add(new() { Id = 2, Do = "Kedi sevmek" });
-                _YapmaListesiReporsitory.Add(new() { Id = 3, Do = "Saygınlık" });
-
-            }
+            
           
 
         }

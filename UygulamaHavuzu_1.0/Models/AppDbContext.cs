@@ -3,14 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace UygulamaHavuzu_1._0.Models
 {
-    public class YapmaListesi
+    public class AppDbContext
     {
-      
-        public int Id { get; set; }
-        public string Do { get; set; }
-        public string Name { get; set; }
-
     }
 }

@@ -5,6 +5,7 @@
 }
 
 
+@using System.Web
 
 <h1>OzluSozApp ama yenisi</h1>
 
@@ -18,16 +19,36 @@
 
 </head>
 <body>
+    <style>
+        #twitter-link img {
+            width: 50px; /* Özel genişlik değeri */
+            height: 50px; /* Özel yükseklik değeri */
+            /* Diğer özel stillendirme seçenekleri */
+        }
+    </style>
+
 
     <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh">
 
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">Quote of the Day</h5>
-                <p class="card-text" id="qSoz">Buraya söz gelecek</p>
-                <p class="card-text" id="qName">Buraya söyleyen gelecek</p>
+                
+                <blockquote class="blockquote">
+                    <p class="card-text" id="qSoz" style=" font-style:italic">Ya tutarsa...</p>
+                </blockquote>
+                <blockquote class="blockquote">
+                    <p class="card-text" id="qName" style="font-weight: lighter;  font-style: italic ">Nasrettin Hoca</p>
+                </blockquote>
+                <button class="btn btn-link" onclick="BtnClick()"><img src="~/css/generate.png" alt="Generate" /></button>
+                <a class="twitter-share-button"
+                   href="https://twitter.com/intent/tweet?hashtags=YazılımPark&text=" id="twitter-link">
+                    <img src="~/css/twitter.png" alt="Tweet" />
+                </a>
 
-                <button class="btn btn-danger" onclick="BtnClick()">Click pls</button>
+
+
+
             </div>
         </div>
 
@@ -35,7 +56,7 @@
     </div>
     <div>
 
-            <h2>Id :  <span id="qId"></span></h2>
+        <h2>Id :  <span id="qId"></span></h2>
 
 
     </div>
@@ -59,6 +80,11 @@
                 $("#qId").text(randomQuote.id);
                 $("#qName").text(randomQuote.name);
                 $("#qSoz").text(randomQuote.soz);
+
+                var twitterLink = document.getElementById("twitter-link");
+                var tweetText = encodeURIComponent(randomQuote.soz + "\n\n- " + randomQuote.name);
+                twitterLink.href = "https://twitter.com/intent/tweet?hashtags=YazılımPark&text=" + tweetText;
+
            
 
                 previousIndex = randomIndex; // Önceki indeksi güncelle

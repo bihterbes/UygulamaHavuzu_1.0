@@ -23,6 +23,50 @@
     "Id": 5,
     "Name": "Earl Nightingale",
     "Soz": "Successful people are not without problems. They're simply people who've learned to solve their problems."
+  },
+  {
+    "Id": 6,
+    "Name": "Christopher Marlowe",
+    "Soz": "The only sin is ignorance"
+  },
+  {
+    "Id": 7,
+    "Name": "Demosthenes",
+    "Soz": "A man is his own easiest dupe, for what he wishes to be true he generally believes to be true"
+  },
+  {
+    "Id": 8,
+    "Name": "Mark Twain",
+    "Soz": "A lie can travel halfway around the world while the truth is putting on its shoes"
+  },
+  {
+    "Id": 9,
+    "Name": "Eleanor Roosevelt",
+    "Soz": "Great minds discuss ideas; average minds discuss events; small minds discuss people"
+  },
+  {
+    "Id": 10,
+    "Name": "Marcus Tullius Cicero",
+    "Soz": "If you have a garden and a library, you have everything you need"
+  },
+  {
+    "Id": 11,
+    "Name": "Pliny the Elder",
+    "Soz": "Truth comes out in wine"
+  },
+  {
+    "Id": 12,
+    "Name": "Rumi",
+    "Soz": "Everything in the universe is within you. Ask all from yourself"
+  },
+  {
+    "Id": 13,
+    "Name": "Desiderius Erasmus",
+    "Soz": "When I get a little money I buy books; and if any is left I buy food and clothes"
   }
- 
+
+
+
+
+
 ]
