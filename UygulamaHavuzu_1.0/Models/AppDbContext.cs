@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,7 +7,13 @@ using System.Threading.Tasks;
 
 namespace UygulamaHavuzu_1._0.Models
 {
-    public class AppDbContext
+    public class AppDbContext:DbContext
     {
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        {
+
+        }
+
+        public DbSet<YapmaListesi> Todo_tablo { get; set; }
     }
 }

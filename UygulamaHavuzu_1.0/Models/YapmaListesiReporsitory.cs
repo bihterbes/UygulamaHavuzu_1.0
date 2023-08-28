@@ -9,9 +9,9 @@ namespace UygulamaHavuzu_1._0.Models
     {
         private static List<YapmaListesi> _YapmaListesi=new List<YapmaListesi>()
         {
-              new() { Id = 1, Name="AHMET", Do = "Bugün yapcak bişi var ama yok" },
-              new() { Id = 2, Name = "MEHMET", Do = "Kedi sevmek" },
-              new() { Id = 3, Name = "AYŞE", Do = "Saygınlık" }
+              new() { Id = 1, Do = "Bugün yapcak bişi var ama yok" },
+              new() { Id = 2, Do = "Kedi sevmek" },
+              new() { Id = 3, Do = "Saygınlık" }
         };
         //bu statik düzelt
 
@@ -40,7 +40,7 @@ namespace UygulamaHavuzu_1._0.Models
             }
 
             hasList.Do=updateDo.Do;
-            hasList.Name = updateDo.Name;
+           // hasList.Name = updateDo.Name;
 
             var index = _YapmaListesi.FindIndex(x => x.Id == updateDo.Id);
 

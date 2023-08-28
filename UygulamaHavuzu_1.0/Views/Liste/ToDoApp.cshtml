@@ -1,16 +1,32 @@
 ﻿@{
 
-    
+
     <title>Todo App Denemesi</title>
 }
 @model List<YapmaListesi>
 
-    <a asp-controller="Liste" asp-action="add"> Ekle</a>
+@if (TempData["status"] != null)
+{
+    <div class="alert alert-secondary" role="alert">
+        @TempData["status"]
+    </div>
+}
+
+
+
+<form asp-controller="Liste" asp-action="Add" method="post">
+
+    <input type="text" name="Do" placeholder="Yeni görev açıklamasını girin" required />
+
+    <button type="submit">Görev Ekle</button>
+
+</form>
+
+
 <table class="table">
     <thead>
         <tr>
             <th>Id</th>
-            <th>İsim</th>
             <th>Yapılacak</th>
             <th>İşlem</th>
         </tr>
@@ -22,10 +38,12 @@
         {
             <tr>
                 <td>@item.Id</td>
-                <td>@item.Name</td>
+
                 <td>@item.Do</td>
-                <td><a asp-controller="Liste" asp-action="remove" asp-route-id="@item.Id">Sil</a></td>
-                <td><a asp-controller="Liste" asp-action="update" asp-route-id="@item.Id">güncelle</a></td>
+                <td><a href="#" class="removeLink" data-id="@item.Id">Sil</a></td>
+                <td><a asp-controller="Liste" asp-action="update" asp-route-id="@item.Id">Güncelle</a></td>
+                <td>
+                </td>
             </tr>
 
         }
@@ -34,14 +52,33 @@
 </table>
 
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
-<div class="custom-control custom-checkbox">
-    <input type="checkbox" class="custom-control-input" id="customCheck1">
-    <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
-</div>
-<h1>Yapılacaklar</h1>
-<td></td>
+<script>
+    $(document).ready(function () {
+       
+
+        // Görev Silme AJAX
+        $(".removeLink").click(function () {
+            var id = $(this).data("id");
+            var row = $(this).closest("tr");
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("Remove", "Liste")", // Değiştirmeniz gerekebilir
+                data: { id: id },
+                success: function () {
+                    row.remove();
+                }
+            });
+        });
+    });
+</script>
+
+
+
+
+
 
 
 

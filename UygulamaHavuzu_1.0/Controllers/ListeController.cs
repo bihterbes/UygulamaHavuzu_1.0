@@ -9,37 +9,83 @@ namespace UygulamaHavuzu_1._0.Controllers
 {
     public class ListeController : Controller
     {
+        private AppDbContext _context;
         private readonly YapmaListesiReporsitory _YapmaListesiReporsitory;
 
-        public ListeController()
+        public ListeController(AppDbContext context)
         {
             _YapmaListesiReporsitory =new YapmaListesiReporsitory();
 
-            
-          
+            _context = context;
+        
 
         }
         public IActionResult ToDoApp()
         {
-            var listeler = _YapmaListesiReporsitory.GetAll();
+            var listeler = _context.Todo_tablo.ToList();
+           
             return View(listeler);
         }
 
         public IActionResult Remove(int id)
         {
-            _YapmaListesiReporsitory.Remove(id);
+            
+	
+            var liste = _context.Todo_tablo.Find(id);
+            _context.Todo_tablo.Remove(liste);
+
+
+            _context.SaveChanges();
+
             return RedirectToAction("ToDoApp");
         }
-        public IActionResult Add()
+       
+     
+
+        [HttpPost]
+        public IActionResult Add(string Do, bool IsCompleted)
         {
-            return View();
+          
+           
+            YapmaListesi newListe = new YapmaListesi() { Do = Do, IsCompleted=IsCompleted };
+            _context.Todo_tablo.Add(newListe);
+            _context.SaveChanges();
+
+            return RedirectToAction("ToDoApp");
+
         }
+
+        [HttpGet]
         public IActionResult Update(int id)
         {
-            return View();
+            var list = _context.Todo_tablo.Find(id);
+            return View(list);
         }
+
+        [HttpPost]
+        public IActionResult Update(YapmaListesi updateListe)
+        {
+            _context.Todo_tablo.Update(updateListe);
+            _context.SaveChanges();
+
+
+
+
+            return RedirectToAction("ToDoApp");
+        }
+
+    
+
+     
+
+
 
 
 
     }
+
+
+
+
+
 }

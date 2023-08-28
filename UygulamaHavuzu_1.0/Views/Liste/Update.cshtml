@@ -4,4 +4,19 @@
 }
 
 <h1>güncelleme</h1>
+@model YapmaListesi
 
+<form asp-controller="Liste" asp-action="Update" method="post">
+    <input type="hidden" asp-for="Id" />
+    <input type="text" asp-for="Do" />
+  
+    <div class="form-check">
+        <input class="form-check-input" asp-for="TamamlandiMi">
+        <label class="form-check-label" for="defaultCheck1">
+            Yapıldı mı?
+        </label>
+    </div>
+
+    <button type="submit">Görev Güncelle</button>
+
+</form>
