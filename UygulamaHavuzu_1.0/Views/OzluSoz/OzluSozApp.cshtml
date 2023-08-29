@@ -1,13 +1,14 @@
 ﻿
 @{
     ViewData["Title"] = "OzluSozApp";
+    Layout = "_QuotesLayout";
 
 }
 
 
 @using System.Web
 
-<h1>OzluSozApp ama yenisi</h1>
+
 
 <html>
 
@@ -54,12 +55,7 @@
 
 
     </div>
-    <div>
-
-        <h2>Id :  <span id="qId"></span></h2>
-
-
-    </div>
+             
 
 </body>
 </html>
@@ -67,6 +63,15 @@
 
 
 <script>
+
+    /*-
+        <div>
+
+         <h2>Id :  <span id="qId"></span></h2>
+
+        </div>  
+     
+     */
     var previousIndex = -1; // Önceki seçilen indeksi saklamak için
 
     function BtnClick() {
