@@ -20,7 +20,46 @@ namespace UygulamaHavuzu_1._0.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            Models.ContentModel obj;
+            List<Models.ContentModel> lobj = new List<ContentModel>();
+
+            obj = new ContentModel();
+            obj.title = "BMI Calculator";
+            obj.text = "Calculate your estimated body fat percentage using Body Mass Index!";
+            obj.img = "/css/kitle indeksi.jpg";
+            obj.kontrol = "HomeController1";
+            obj.aksiyon = "Index";
+
+            lobj.Add(obj);
+
+            obj = new ContentModel();
+            obj.title = "Random Quotes";
+            obj.text = "Browse of collection of random quotes to give you inspiration and share";
+            obj.img = "/css/kitaplar3.jpg";
+            obj.kontrol = "ozlusoz";
+            obj.aksiyon = "ozlusozapp";
+
+            lobj.Add(obj);
+
+            obj = new ContentModel();
+            obj.title = "To-Do App";
+            obj.text = "A simple to do list app to manage your daily life tasks. Create your own list!";
+            obj.img = "/css/todoResim3.jpg";
+            obj.kontrol = "liste";
+            obj.aksiyon = "todoapp";
+
+            lobj.Add(obj);
+
+            obj = new ContentModel();
+            obj.title = "Weather App";
+            obj.text = "The Weather Channel provide local weather forecast for cities, check now";
+            obj.img = "/css/havadurumu3.jpg";
+            obj.kontrol = "havadurumu";
+            obj.aksiyon = "havadurumuapp";
+
+            lobj.Add(obj);
+
+            return View(lobj);
         }
 
         public IActionResult Privacy()

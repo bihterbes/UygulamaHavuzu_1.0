@@ -1,0 +1,14 @@
+﻿@model WeatherModels
+@{
+    Layout = "_Layout";
+
+}
+<div>
+    <h1>PArtialdan aldım</h1>
+    <h2>@Model.City</h2>
+    <p>@Model.Description</p>
+    <p>Temperature: @Model.Temperature °C</p>
+    <p>Humidity: @Model.Humidity %</p>
+    <p>Wind Speed: @Model.WindSpeed m/s</p>
+    <p>Last Updated: @Model.LastUpdated.ToString("yyyy-MM-dd HH:mm:ss")</p>
+</div>

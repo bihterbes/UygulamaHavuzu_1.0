@@ -1,15 +1,27 @@
-﻿@model WeatherModels
+﻿@model UygulamaHavuzu_1._0.Models.WeatherModels
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Hava Durumu</title>
-</head>
-<body>
-    <h1>Hava Durumu Bilgileri</h1>
-    <p>Şehir: @Model.Name</p>
-    <p>Rüzgar Hızı: @Model.WindSpeed</p>
-    <p>Nem: @Model.Humidity</p>
-    <p>Sıcaklık: @Model.Temperature</p>
-</body>
-</html>
+@{
+    ViewData["Title"] = "Hava Durumu";
+
+}
+
+<h2>Hava Durumu</h2>
+
+<form asp-action="Index" method="get">
+    <label for="city">Şehir Adı:</label>
+    <input type="text" id="city" name="city" />
+    <button type="submit">Hava Durumu Getir</button>
+</form>
+
+@if (Model != null)
+{
+    <h3>@Model.City - Hava Durumu</h3>
+    <p>Açıklama: @Model.Description</p>
+    <p>Sıcaklık: @Model.Temperature °C</p>
+    <p>Nem: @Model.Humidity %</p>
+    <p>Rüzgar Hızı: @Model.WindSpeed m/s</p>
+
+    <p>Son Güncelleme: @Model.LastUpdated</p>
+}
+
+
