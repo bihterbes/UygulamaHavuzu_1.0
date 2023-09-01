@@ -43,11 +43,11 @@ namespace UygulamaHavuzu_1._0.Controllers
      
 
         [HttpPost]
-        public IActionResult Add(string Do, bool IsCompleted)
+        public IActionResult Add(string Do, bool TamamlandiMi)
         {
           
            
-            YapmaListesi newListe = new YapmaListesi() { Do = Do, IsCompleted=IsCompleted };
+            YapmaListesi newListe = new YapmaListesi() { Do = Do, TamamlandiMi=TamamlandiMi };
             _context.Todo_tablo.Add(newListe);
             _context.SaveChanges();
 
@@ -65,8 +65,21 @@ namespace UygulamaHavuzu_1._0.Controllers
         [HttpPost]
         public IActionResult Update(YapmaListesi updateListe)
         {
-            _context.Todo_tablo.Update(updateListe);
-            _context.SaveChanges();
+            var existingListe = _context.Todo_tablo.Find(updateListe.Id);
+
+            if (existingListe != null)
+            {
+                // Yeni bilgileri mevcut öğeye kopyalayın
+                
+                existingListe.TamamlandiMi = updateListe.TamamlandiMi;
+
+                _context.Todo_tablo.Update(existingListe);
+
+                _context.SaveChanges();
+            }
+
+           // _context.Todo_tablo.Update(updateListe);
+            //_context.SaveChanges();
 
 
 

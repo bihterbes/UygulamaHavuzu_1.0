@@ -23,14 +23,14 @@ namespace UygulamaHavuzu_1._0.Controllers
 
         public async Task<IActionResult> Index(string city)
         {
-            //city = "New york";
+            city = "New york";
             if (string.IsNullOrEmpty(city))
             {
                 return View();
             }
 
             string apiKey = "b1ded651a30f8840194a8ae16154d8e8";
-            string apiUrl = $"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={apiKey}&units=metric";
+            string apiUrl = $"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={apiKey}&units=metric&&lang=tr";
 
             HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);
 

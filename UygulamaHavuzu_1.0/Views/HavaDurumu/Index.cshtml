@@ -5,6 +5,8 @@
 
 }
 
+
+
 <h2>Hava Durumu</h2>
 
 <form asp-action="Index" method="get">
@@ -20,8 +22,41 @@
     <p>Sıcaklık: @Model.Temperature °C</p>
     <p>Nem: @Model.Humidity %</p>
     <p>Rüzgar Hızı: @Model.WindSpeed m/s</p>
-
+    <img src="https://openweathermap.org/img/w/@(Model.WeatherIcon).png" alt="Weather Icon">    //ulan parantez eklemediğimden olmuş
     <p>Son Güncelleme: @Model.LastUpdated</p>
 }
 
 
+<!DOCTYPE html>
+<html>
+<head>
+        <link rel="stylesheet" href="~/css/stil/WeatherNewStyle.css" />
+    
+</head>
+<body>
+ 
+
+
+        <div class="card">
+            <div class="city">@Model.City</div>
+            <div class="description">@Model.Description</div>
+            <div class="temperature">@Model.Temperature &deg;C</div>
+            <div class="info">
+                <div>
+                    <img class="icon" src="https://openweathermap.org/img/w/@(Model.WeatherIcon).png" alt="Weather Icon">
+                </div>
+
+
+                <div class="extra-info">
+                    <img src="~/css/nem.png" alt="Humidity Icon">
+                    <span>Humidity: @Model.Humidity%</span>
+                </div>
+
+                <div class="extra-info">
+                    <img src="~/css/windd.png" alt="Wind Icon">
+                    <span>Wind Speed: @Model.WindSpeed m/s</span>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

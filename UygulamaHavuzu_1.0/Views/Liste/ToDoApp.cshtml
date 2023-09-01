@@ -14,50 +14,85 @@
 
 
 
-<form asp-controller="Liste" asp-action="Add" method="post">
-
-    <input type="text" name="Do" placeholder="Yeni görev açıklamasını girin" required />
-
-    <button type="submit">Görev Ekle</button>
-
-</form>
 
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Yapılacak</th>
-            <th>İşlem</th>
-        </tr>
-    </thead>
-    <tbody>
 
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Id</td>
-
-                <td>@item.Do</td>
-                <td><a href="#" class="removeLink" data-id="@item.Id">Sil</a></td>
-                <td><a asp-controller="Liste" asp-action="update" asp-route-id="@item.Id">Güncelle</a></td>
-                <td>
-                </td>
-            </tr>
-
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Örnek</title>
+    <style>
+        input[type="checkbox"] {
+            content: url('../css/icon_emptybox.png');
+            display: block;
+            width: 30px;
+            height: 30px;
         }
-    </tbody>
 
-</table>
+            input[type="checkbox"]:checked {
+                content: url('../css/icon_checked.png');
+            }
+
+    </style>
+</head>
+<body>
+
+    <form asp-controller="Liste" asp-action="Add" method="post">
+
+        <input type="text" name="Do" placeholder="Yeni görev açıklamasını girin" required />
+
+        <button type="submit">Görev Ekle</button>
+
+    </form>
+
+    <div class="container">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Yapılacak</th>
+                    <th>İşlem</th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.Id</td>
+
+                    <td>@item.Do</td>
+                    <td><a href="#" class="removeLink" data-id="@item.Id">Sil</a></td>
+                    <td><a asp-controller="Liste" asp-action="update" asp-route-id="@item.Id">Güncelle</a></td>
+                    <td><input type="checkbox" class="tamamlandiMiCheckbox" data-id="@item.Id" @(item.TamamlandiMi ? "checked" : "") /></td>
+
+                </tr>
+
+                }
+            </tbody>
+
+        </table>
+
+
+    </div>
+</body>
+</html>
+
+
+
+
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
 <script>
     $(document).ready(function () {
-       
+
+
 
         // Görev Silme AJAX
         $(".removeLink").click(function () {
@@ -65,27 +100,33 @@
             var row = $(this).closest("tr");
             $.ajax({
                 type: "POST",
-                url: "@Url.Action("Remove", "Liste")", // Değiştirmeniz gerekebilir
+                url: "@Url.Action("Remove", "Liste")", 
                 data: { id: id },
                 success: function () {
                     row.remove();
                 }
             });
         });
+
+
+       // Checkbox durumu değiştiğinde Update metodu çağrılacak
+        $(".tamamlandiMiCheckbox").change(function () {
+            var id = $(this).data("id");
+            var isChecked = $(this).is(":checked");
+
+            // AJAX isteği ile Update metodu çağrılacak
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("Update", "Liste")",
+                data: { id: id, Do: "", TamamlandiMi: isChecked }, // Do parametresi gerekebilir, isteğe bağlı
+                success: function () {
+                    // Başarılı işlem sonrası yapılacak işlemler (isteğe bağlı)
+                },
+                error: function () {
+                    // Hata durumunda yapılacak işlemler (isteğe bağlı)
+                }
+            });
+        });
+
     });
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
