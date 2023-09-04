@@ -55,7 +55,7 @@ namespace UygulamaHavuzu_1._0.Controllers
             obj.text = "The Weather Channel provide local weather forecast for cities, check now";
             obj.img = "/css/havadurumu3.jpg";
             obj.kontrol = "havadurumu";
-            obj.aksiyon = "havadurumuapp";
+            obj.aksiyon = "Index";
 
             lobj.Add(obj);
 

@@ -1,0 +1,6 @@
+﻿/*
+
+
+    <link rel="stylesheet" href="~/css/stil/styleNewtodo.css" / >
+     <td><a asp-controller="Liste" asp-action="update" asp-route-id="@item.Id">Güncelle</a></td>
+*/

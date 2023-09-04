@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,6 +26,11 @@ namespace UygulamaHavuzu_1._0
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(typeof(Startup)); // AutoMapper'ý ekleyin
+
+            // Diðer servisleri ekleyin
+
+            services.AddControllers();
             services.AddHttpClient();
             services.AddControllersWithViews();
             //DB context con string ekledik

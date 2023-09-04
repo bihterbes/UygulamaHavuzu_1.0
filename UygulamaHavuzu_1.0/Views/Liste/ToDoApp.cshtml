@@ -2,20 +2,10 @@
 
 
     <title>Todo App Denemesi</title>
+    Layout = "_EmptyLayout";
+
 }
-@model List<YapmaListesi>
-
-@if (TempData["status"] != null)
-{
-    <div class="alert alert-secondary" role="alert">
-        @TempData["status"]
-    </div>
-}
-
-
-
-
-
+@model List<TodoViewModel>
 
 
 <!DOCTYPE html>
@@ -23,6 +13,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Örnek</title>
+
     <style>
         input[type="checkbox"] {
             content: url('../css/icon_emptybox.png');
@@ -34,24 +25,29 @@
             input[type="checkbox"]:checked {
                 content: url('../css/icon_checked.png');
             }
-
     </style>
 </head>
 <body>
+    <div class="d-flex p-2 w-100">
+        <form asp-controller="Liste" asp-action="Add" method="post" class="d-flex p-2 w-100">
 
-    <form asp-controller="Liste" asp-action="Add" method="post">
+            <input type="text" name="Do" class="form-control" placeholder="Yeni görev açıklamasını girin" required />
 
-        <input type="text" name="Do" placeholder="Yeni görev açıklamasını girin" required />
+            <button type="button" id="addButton" class="addLink"><img src=~/css/images/icon_ekle.png alt="Görev Ekle" width="30" height="30" /></button>
 
-        <button type="submit">Görev Ekle</button>
+        </form>
+    </div>
 
-    </form>
 
-    <div class="container">
+
+
+    <div class="container-lg" style="margin-top: 50px">
+
 
         <table class="table">
             <thead>
                 <tr>
+                    <th>No</th>
                     <th>Id</th>
                     <th>Yapılacak</th>
                     <th>İşlem</th>
@@ -62,23 +58,29 @@
 
                 @foreach (var item in Model)
                 {
-                <tr>
-                    <td>@item.Id</td>
+                    <tr>
+                        <td class="row-number"></td>
+                        <td>@item.Id</td>
 
-                    <td>@item.Do</td>
-                    <td><a href="#" class="removeLink" data-id="@item.Id">Sil</a></td>
-                    <td><a asp-controller="Liste" asp-action="update" asp-route-id="@item.Id">Güncelle</a></td>
-                    <td><input type="checkbox" class="tamamlandiMiCheckbox" data-id="@item.Id" @(item.TamamlandiMi ? "checked" : "") /></td>
+                        <td>@item.Do</td>
+                        <td>
 
-                </tr>
+                            <input type="checkbox" class="tamamlandiMiCheckbox" data-id="@item.Id" @(item.TamamlandiMi ? "checked" : "") />
+
+                        </td>
+                        <td><a href="#" class="removeLink" data-id="@item.Id"><img src=~/css/images/icon_bin.png alt="Görev Sil" width="20" height="20" /></a></td>
+
+
+
+                    </tr>
 
                 }
+
             </tbody>
-
         </table>
-
-
     </div>
+
+
 </body>
 </html>
 
@@ -87,10 +89,25 @@
 
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<script>
+
+
+@section Scripts{
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+    function runningFormatter(value, row, index) {
+        return index;
+    }
+
+
+
     $(document).ready(function () {
+
+        updateRowNumbers();
+
 
 
 
@@ -100,13 +117,16 @@
             var row = $(this).closest("tr");
             $.ajax({
                 type: "POST",
-                url: "@Url.Action("Remove", "Liste")", 
+                url: "@Url.Action("Remove", "Liste")",
                 data: { id: id },
                 success: function () {
                     row.remove();
+
+                    updateRowNumbers();
                 }
             });
         });
+
 
 
        // Checkbox durumu değiştiğinde Update metodu çağrılacak
@@ -127,6 +147,16 @@
                 }
             });
         });
-
+        function updateRowNumbers() {
+            $(".row-number").each(function (index) {
+                $(this).text(index + 1);
+            });
+        }
     });
-</script>
+    </script>
+
+
+
+}
+
+
