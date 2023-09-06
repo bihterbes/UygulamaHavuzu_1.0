@@ -24,7 +24,7 @@ namespace UygulamaHavuzu_1._0.Controllers
             var _httpClient = new HttpClient();
             foreach (var cityname in Cities)
             {
-                var response = await _httpClient.GetAsync($"https://api.openweathermap.org/data/2.5/weather?q={cityname}&appid={apiKey}&&lang=tr");
+                var response = await _httpClient.GetAsync($"http://api.openweathermap.org/data/2.5/weather?q={cityname}&appid={apiKey}&units=metric&&lang=tr");
                 var WeatherJson = await response.Content.ReadAsStringAsync();
                 var CityObject = WeatherModel.FromJson(WeatherJson);
                 CityWeathers.Add(CityObject);

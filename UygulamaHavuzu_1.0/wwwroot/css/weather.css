@@ -38,3 +38,52 @@ button{
         .row{
             font-family:'Poppins', sans-serif;
         }
+        /* ----------------------------------------------------------------------------------------------------------------*/
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    display: inline-block;
+    margin: 10px;
+    vertical-align: top;
+    background-color: #f5f5f5; /* Açık Gri Renk */
+}
+
+.city {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.description {
+    margin-top: 8px;
+    color: #555;
+}
+
+.temperature {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.info {
+    margin-top: 10px;
+    color: #888;
+}
+
+.icon {
+    width: 80px; /* İkon boyutunu büyütmek */
+    height: 80px;
+    margin-left: 10px;
+}
+
+
+.icon, .extra-info img {
+    vertical-align: middle;
+}
+
+.extra-info img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}

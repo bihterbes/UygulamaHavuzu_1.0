@@ -50,7 +50,8 @@
 
  @*----------------------------------------------Scriptler----------------------------------------------*@
 <script>
-        const apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
+    const apiUrl = "https://api.openweathermap.org/data/2.5/weather?8&units=metric&&lang=tr&&q=";
+    
         const apiKey = "b1ded651a30f8840194a8ae16154d8e8";
         const searchBox = document.querySelector(".search input")
         const searchBtn = document.querySelector(".search button")
@@ -60,7 +61,7 @@
             console.log(data);
             document.querySelector(".cityname").innerHTML = data.name;
             document.querySelector(".countryname").innerHTML = data.sys.country;
-            document.querySelector(".temp").innerHTML = Math.round(data.main.temp - 273.15) + "°C";
+            document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°C";
             document.querySelector(".pressure").innerHTML = data.main.pressure + " mb";
             document.querySelector(".humidity").innerHTML = data.main.humidity + " %";
             document.querySelector(".wind").innerHTML = data.wind.speed + " km/h";
