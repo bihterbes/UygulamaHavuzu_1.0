@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using UygulamaHavuzu_1._0.Models;
 using Newtonsoft.Json.Linq;
+using UygulamaHavuzu_1._0.ViewModel;
 
 namespace UygulamaHavuzu_1._0.Controllers
 
@@ -23,7 +24,9 @@ namespace UygulamaHavuzu_1._0.Controllers
 
         public async Task<IActionResult> Index(string city)
         {
-            city = "New york";
+
+          
+            //city = "New york";
             if (string.IsNullOrEmpty(city))
             {
                 return View();
@@ -38,9 +41,10 @@ namespace UygulamaHavuzu_1._0.Controllers
             {
                 string jsonResult = await response.Content.ReadAsStringAsync();
                 var weatherData = JObject.Parse(jsonResult);
-
+                
                 WeatherModels weatherModel = new WeatherModels
                 {
+
                     City = weatherData["name"].ToString(),
                     Description = weatherData["weather"][0]["description"].ToString(),
                     Temperature = Convert.ToDouble(weatherData["main"]["temp"]),
@@ -49,6 +53,9 @@ namespace UygulamaHavuzu_1._0.Controllers
                     WeatherIcon = weatherData["weather"][0]["icon"].ToString(),
                     LastUpdated = DateTime.Now
                 };
+
+               
+
 
                 return View(weatherModel);
             }

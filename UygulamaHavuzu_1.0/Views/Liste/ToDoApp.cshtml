@@ -28,62 +28,50 @@
     </style>
 </head>
 <body>
-    <div class="d-flex p-2 w-100">
-        <form asp-controller="Liste" asp-action="Add" method="post" class="d-flex p-2 w-100">
-
-            <input type="text" name="Do" class="form-control" placeholder="Yeni görev açıklamasını girin" required />
-
-            <button type="button" id="addButton" class="addLink"><img src=~/css/images/icon_ekle.png alt="Görev Ekle" width="30" height="30" /></button>
-
-        </form>
-    </div>
+    
+    @*{
+        sayfa düzeni hallet ve numaraları hallet
 
 
+    }*@
 
 
     <div class="container-lg" style="margin-top: 50px">
 
+        <div class="d-flex p-2 w-100">
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Id</th>
-                    <th>Yapılacak</th>
-                    <th>İşlem</th>
-                </tr>
-            </thead>
-            <tbody>
+            <input type="text" class="form-control" id="Do" name="Do" placeholder="Yeni görev açıklamasını girin" required />
 
+            <button id="btnSave" type="button" class="addLink"><img src=~/css/images/icon_ekle.png alt="Görev Ekle" width="30" height="30" /></button>
 
-                @foreach (var item in Model)
-                {
+        </div>
+        <div class="container-fluid">
+
+            <table class="table table-hover">
+                <thead>
                     <tr>
-                        <td class="row-number"></td>
-                        <td>@item.Id</td>
-
-                        <td>@item.Do</td>
-                        <td>
-
-                            <input type="checkbox" class="tamamlandiMiCheckbox" data-id="@item.Id" @(item.TamamlandiMi ? "checked" : "") />
-
-                        </td>
-                        <td><a href="#" class="removeLink" data-id="@item.Id"><img src=~/css/images/icon_bin.png alt="Görev Sil" width="20" height="20" /></a></td>
-
-
-
+                        
+                        <th>#</th>
+                        <th>Yapılacak</th>
+                        <th>İşlem</th>
                     </tr>
+                </thead>
 
-                }
+                <tbody id="gorev">
 
-            </tbody>
-        </table>
+
+                </tbody>
+
+            </table>
+
+
+        </div>
+           
     </div>
 
 
 </body>
 </html>
-
 
 
 
@@ -98,41 +86,13 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
-    function runningFormatter(value, row, index) {
-        return index;
-    }
+          function runningFormatter(value, row, index) {
+              return index;
+          }
 
-
-
-    $(document).ready(function () {
-
-        updateRowNumbers();
-
-
-
-
-        // Görev Silme AJAX
-        $(".removeLink").click(function () {
-            var id = $(this).data("id");
-            var row = $(this).closest("tr");
-            $.ajax({
-                type: "POST",
-                url: "@Url.Action("Remove", "Liste")",
-                data: { id: id },
-                success: function () {
-                    row.remove();
-
-                    updateRowNumbers();
-                }
-            });
-        });
-
-
-
-       // Checkbox durumu değiştiğinde Update metodu çağrılacak
-        $(".tamamlandiMiCheckbox").change(function () {
-            var id = $(this).data("id");
-            var isChecked = $(this).is(":checked");
+         function tamamlandiMiCheckbox(bu) {
+                 var id = $(bu).data("id");
+                 var isChecked = $(bu).is(":checked");
 
             // AJAX isteği ile Update metodu çağrılacak
             $.ajax({
@@ -140,13 +100,109 @@
                 url: "@Url.Action("Update", "Liste")",
                 data: { id: id, Do: "", TamamlandiMi: isChecked }, // Do parametresi gerekebilir, isteğe bağlı
                 success: function () {
-                    // Başarılı işlem sonrası yapılacak işlemler (isteğe bağlı)
+                    console.log("checkbox düzgün. ");
                 },
                 error: function () {
-                    // Hata durumunda yapılacak işlemler (isteğe bağlı)
+                    console.log("checkboxta hata. ");
                 }
             });
-        });
+         }
+
+
+           // Görev Silme AJAX
+        function removeLink(sil) {
+            
+            
+            var id = $(sil).attr("data-id");
+            var row = $(sil).closest("tr");
+
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("Remove", "Liste")",
+                data: { id: id },
+                success: function () {
+                    row.remove();
+
+                   
+                }
+            });
+        }
+
+    $(document).ready(function () {
+
+        updateRowNumbers();
+
+        function loadGorev() {
+            $.ajax({
+                type: "GET",
+                url: "/Liste/ShowList",
+                success: function (data) {
+                    console.log(data);
+                  
+                    $("#gorev").html("");
+                    $.each(data, function (index, item) {
+                        console.log(item);
+                        let gorevv = `<tr>
+                                         <td class="row-number">${index + 1}</td> <!-- Display row number here -->
+                                        
+
+                                         <td>${item.do}</td>
+                                      <td>
+
+                                    <input type="checkbox" onchange="tamamlandiMiCheckbox(this);" class="tamamlandiMiCheckbox" data-id="${item.id}" ${(item.tamamlandiMi ? "checked" : "")} />
+
+                                       </td>
+                                <td><button onclick="removeLink(this);" class="removeLink" data-id="${item.id}"><img src="/css/images/icon_bin.png" alt="Görev Sil" width="20" height="20" /></button></td>
+
+
+
+                                        </tr>`;
+
+                        $("#gorev").append(gorevv);
+
+                        
+                    })
+
+                },
+                error: function (e) {
+
+                    console.log(e);
+                }
+
+
+            })
+
+
+        }
+
+
+        loadGorev();
+
+        $("#btnSave").click(function () {
+
+
+            var doo = $("#Do").val();
+
+            var jsonData = {"do": doo};
+
+
+            $.ajax({
+                type: "POST",
+                url: "/Liste/Add",
+                data: jsonData,
+                success: function (data) {
+                   // alert("görev kaydedildi.");
+                    loadGorev();
+                },
+                error: function (e) {
+
+                    console.log(e);
+                }
+
+            })
+
+        })
+
         function updateRowNumbers() {
             $(".row-number").each(function (index) {
                 $(this).text(index + 1);

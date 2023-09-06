@@ -23,20 +23,13 @@ namespace UygulamaHavuzu_1._0.Controllers
             _mapper = mapper;
         }
         public IActionResult ToDoApp()
-
-
         {
-            var listeler = _context.Todo_tablo.ToList();
-
-
-
-
-           
-            return View(_mapper.Map<List<TodoViewModel>>(listeler));
-
-
+            //var listeler = _context.Todo_tablo.ToList();
+            //return View(_mapper.Map<List<TodoViewModel>>(listeler));
+            return View(); 
 
         }
+
 
         public IActionResult Remove(int id)
         {
@@ -62,9 +55,18 @@ namespace UygulamaHavuzu_1._0.Controllers
             _context.Todo_tablo.Add(newListe);
             _context.SaveChanges();
 
-            return Ok(newListe);
+            return Json(new { IsSuccess = "true" });
+
+        } 
+        [HttpGet]
+        public IActionResult ShowList()
+        {
+            var gorevler = _context.Todo_tablo.ToList();
+          
+            return Json(gorevler);
 
         }
+
 
         [HttpGet]
         public IActionResult Update(int id)
