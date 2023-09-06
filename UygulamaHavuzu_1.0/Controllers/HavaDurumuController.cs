@@ -22,11 +22,11 @@ namespace UygulamaHavuzu_1._0.Controllers
             _httpClient = new HttpClient();
         }
 
-        public async Task<IActionResult> Index(string city)
+        public async Task<IActionResult> Index()
         {
 
           
-            //city = "New york";
+            string city = "New york";
             if (string.IsNullOrEmpty(city))
             {
                 return View();

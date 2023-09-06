@@ -1,0 +1,40 @@
+﻿body {
+    background: #363E4E;
+}
+
+.weather {
+    margin: 15px;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 40px 0 #A2A2A2;
+}
+
+    .weather:hover {
+        box-shadow: 0 0 600px 0 #D4D1DC;
+        transition: .4s;
+        transform: scale(1.03);
+    }
+     
+button{
+    border-radius:100px;
+    margin: 5px;
+    width: 100%;
+    font-size: 35px;
+    padding:5px;
+}
+
+   
+    .bosluk{
+        border-radius:150px;
+        width:80%;
+        font-size:30px;
+
+    }
+        .bosluk:focus-visible {
+            background-color: #e610bf;
+            text-decoration-color: #000000;
+        }
+        .row{
+            font-family:'Poppins', sans-serif;
+        }

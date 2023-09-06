@@ -144,47 +144,29 @@
                         console.log(item);
                         let gorevv = `<tr>
                                          <td class="row-number">${index + 1}</td> <!-- Display row number here -->
-                                        
-
                                          <td>${item.do}</td>
                                       <td>
-
-                                    <input type="checkbox" onchange="tamamlandiMiCheckbox(this);" class="tamamlandiMiCheckbox" data-id="${item.id}" ${(item.tamamlandiMi ? "checked" : "")} />
-
-                                       </td>
+                                          <input type="checkbox" onchange="tamamlandiMiCheckbox(this);" class="tamamlandiMiCheckbox" data-id="${item.id}" ${(item.tamamlandiMi ? "checked" : "")} />
+                                      </td>
                                 <td><button onclick="removeLink(this);" class="removeLink" data-id="${item.id}"><img src="/css/images/icon_bin.png" alt="Görev Sil" width="20" height="20" /></button></td>
-
-
-
                                         </tr>`;
 
-                        $("#gorev").append(gorevv);
-
-                        
+                                $("#gorev").append(gorevv);
                     })
 
                 },
                 error: function (e) {
-
                     console.log(e);
                 }
-
-
             })
-
-
         }
-
 
         loadGorev();
 
         $("#btnSave").click(function () {
 
-
             var doo = $("#Do").val();
-
             var jsonData = {"do": doo};
-
 
             $.ajax({
                 type: "POST",
@@ -195,12 +177,9 @@
                     loadGorev();
                 },
                 error: function (e) {
-
                     console.log(e);
                 }
-
             })
-
         })
 
         function updateRowNumbers() {

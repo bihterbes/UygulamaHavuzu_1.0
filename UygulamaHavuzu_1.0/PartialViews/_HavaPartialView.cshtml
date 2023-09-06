@@ -9,3 +9,18 @@
 
 <h1>burası partşal view</h1>
 
+
+@if (ViewBag.WeatherData != null)
+{
+    <h2>@ViewBag.WeatherData.City</h2>
+    <p>@ViewBag.WeatherData.Description</p>
+    <p>Temperature: @ViewBag.WeatherData.Temperature°C</p>
+    <p>Humidity: @ViewBag.WeatherData.Humidity%</p>
+    <p>Wind Speed: @ViewBag.WeatherData.WindSpeed m/s</p>
+    <img src="https://openweathermap.org/img/w/@(ViewBag.WeatherData.WeatherIcon).png" alt="Weather Icon">
+    <!-- Diğer hava durumu verilerini burada gösterebilirsiniz -->
+}
+else
+{
+    <p>Hava durumu verileri bulunamadı.</p>
+}
