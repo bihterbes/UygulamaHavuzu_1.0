@@ -15,13 +15,21 @@
         transition: .4s;
         transform: scale(1.03);
     }
-     
-button{
-    border-radius:100px;
+
+button {
+    border-radius: 100px; /* Daha yuvarlak köşeler */
+    margin: 5px auto; /* Otomatik yatay hizalama ile ortada durur */
+    width: 50%;
+    
+    float:right;
+}
+
+
+input {
+    border-radius: 50px;
     margin: 5px;
     width: 100%;
-    font-size: 35px;
-    padding:5px;
+    
 }
 
    
@@ -72,7 +80,7 @@ button{
 }
 
 .icon {
-    width: 80px; /* İkon boyutunu büyütmek */
+    width: 80px; 
     height: 80px;
     margin-left: 10px;
 }

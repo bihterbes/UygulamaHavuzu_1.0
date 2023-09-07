@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-    <link rel="icon" type="image/x-icon" href="media/videofiligranı.png">
+  
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/weather.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/AppContainer.styles.css" asp-append-version="true" />
@@ -22,27 +22,22 @@
          @*----------------------------------------------Başlık----------------------------------------------*@
         <div class="row justify-content-around">
             <header class="col-5 mt-5 mb-5">
-                <h1 class="header">Weather Forecast</h1>
+               <!--başlık koy-->
             </header>
         </div>
 
 
 
-         @*----------------------------------------------Sayfa----------------------------------------------*@
+       
         <main role="main" class="pb-3 mt-5">
-@RenderBody()
-</main>
+                @RenderBody()
+        </main>
 </div>
 
 
 
 
- @*----------------------------------------------Footer----------------------------------------------*@
-<footer class=" footer text-muted text-center fixed-bottom p-3">
-    <div class="container">
-        &copy; 2023 - AppContainer - <a class="ftrtext" asp-area="" asp-controller="Home" asp-action="About">About</a> - <a class="ftrtext" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-    </div>
-</footer>
+ 
 
 
 
@@ -54,18 +49,23 @@
     
         const apiKey = "b1ded651a30f8840194a8ae16154d8e8";
         const searchBox = document.querySelector(".search input")
-        const searchBtn = document.querySelector(".search button")
-        async function checkWeather(cityname) {
-            const response = await fetch(apiUrl + cityname + '&appid=' + apiKey);
-            var data = await response.json();
-            console.log(data);
-            document.querySelector(".cityname").innerHTML = data.name;
+    const searchBtn = document.querySelector(".search button")
+    
+
+    async function checkWeather(cityname) {
+        const response = await fetch(apiUrl + cityname + '&appid=' + apiKey);
+        var data = await response.json();
+        const iconCode = data.weather[0].icon;
+        const iconUrl = `https://openweathermap.org/img/wn/${iconCode}.png`;
+        console.log(data);
+        document.querySelector(".cityname").innerHTML = data.name +",";
             document.querySelector(".countryname").innerHTML = data.sys.country;
             document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°C";
-            document.querySelector(".pressure").innerHTML = data.main.pressure + " mb";
+            
             document.querySelector(".humidity").innerHTML = data.main.humidity + " %";
             document.querySelector(".wind").innerHTML = data.wind.speed + " km/h";
             document.querySelector(".sunny").innerHTML = data.weather[0].main;
+            document.querySelector(".resim").innerHTML = `<img src="${iconUrl}" alt="Weather Icon">`;
         }
         searchBtn.addEventListener("click", () => {
             checkWeather(searchBox.value);

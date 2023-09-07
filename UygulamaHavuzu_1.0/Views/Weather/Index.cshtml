@@ -20,35 +20,48 @@
                         <h2>Today</h2>
                         <div class="location">
                             <i class="loc-icon fa-solid fa-location-dot"></i>
-                            <span class="cityname">Paris</span>
-                            <span>,</span>
-                            <span class="countryname">FR</span>
-                        </div>
+                            <span class="cityname"> ~</span>
 
+                            <span class="countryname">~ </span>
+                            
+                        </div>
+                        
                         <div class="degree">
-                            <h1 class="temp">29°C</h1>
-                            <h2 class="sunny">Sunny</h2>
+                            <h1 class="resim"> </h1>
+                            <h1 class="temp">~°C</h1>
+                            <h2 class="sunny">~  </h2>
+
                         </div>
                     </div>
                     <div class="col detail">
                         <div class="details mt-5">
-                            <div class="press">
-                                <span class="title">PRESSURE</span>
-                                <span class="value pressure">1007 mb</span> <br />
-                            </div>
+                           
                             <div class="humid">
-                                <span class="title">HUMIDITY</span>
-                                <span class="value humidity">12 %</span>
-                            </div>
+                                <span class="extra-info">
+                                    <img src="~/css/nem.png" alt="Humidity Icon">
+                                </span>
+
+                                   
+                                    <span class="title">Humidity: </span>
+                                    <span class="value humidity"> ~ %</span>
+                                </div>
                             <div class="win">
-                                <span class="title">WIND</span>
-                                <span class="value wind">1.46 km/h</span>
+                                <span class="extra-info">
+                                    <img src="~/css/windd.png" alt="Wind Icon">
+                                </span>
+                                <span class="title">Wind Speed: </span>
+                                <span class="value wind"> ~ km/h</span>
                             </div>
+                            </div>
+                        
+
                         </div>
-                        <div class="search mt-5 inputBox">
+                    <div class="container">
+                        <div class="search mt-8 inputBox">
                             <input type="text" placeholder="Search for another place..." spellcheck="false">
-                            <i class="fa-solid fa-location-dot inp-icon"></i>
+
                             <button class="btn btn-secondary">Search</button>
+
                         </div>
                     </div>
                 </div>
@@ -64,17 +77,25 @@
                 {
                 <div class="col-lg-3 col-md-12 col-sm-12">
                     <div class="card">
+                        
 
-                        <div class="city">@app.Name</div>
-                        <div class="description">@app.Sys.Country</div>
+                        <i class="loc-icon fa-solid fa-location-dot"></i>
+
+                        <span class="cityname">@app.Name</span>
+                        <span>,</span>
+                        <span class="description">@app.Sys.Country</span>
                         @foreach (var weather in app.Weather)
                         {
                             <div class="description">@weather.Description</div>
                             <div>
                                 <img class="icon" src="https://openweathermap.org/img/w/@(weather.Icon).png" alt="Weather Icon">
+                                
                             </div>
                         }
-                        <div class="temperature">@app.Main.Temp &deg;C</div>
+
+                        <div class="temperature">@Math.Round(app.Main.Temp) &deg;C</div>
+
+
                         <div class="info">
                             <div>
 
@@ -88,7 +109,7 @@
 
                             <div class="extra-info">
                                 <img src="~/css/windd.png" alt="Wind Icon">
-                                <span>Wind Speed: @app.Wind.Speed m/s</span>
+                                <span>Wind Speed: @app.Wind.Speed km/h</span>
                             </div>
                         </div>
                     </div>
@@ -97,3 +118,4 @@
             </div>
         </div>
     </div>
+
